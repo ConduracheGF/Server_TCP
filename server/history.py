@@ -3,6 +3,7 @@ from server.config import Config
 History = {} #discutie -> lista de nume cu mesaje
 
 def add_message(discutie: str, user:str, message: str):
+    #creare istoric
     if discutie not in History:
         History[discutie] = []
     History[discutie].append((user, message))
@@ -10,5 +11,5 @@ def add_message(discutie: str, user:str, message: str):
     if len(History[discutie]) > Config.MAXIM_ISTORIC:
         History[discutie] = History[discutie][-Config.MAXIM_ISTORIC]
 
-def get_history(discutie:str):
+def get_history(discutie:str): #returneaza discutia salvata, ultima parte
     return History.get(discutie, [])
